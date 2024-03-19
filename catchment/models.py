@@ -20,7 +20,6 @@ def read_variable_from_csv(filename):
              Columns will be the individual sites
     """
     dataset = pd.read_csv(filename, usecols=['Date', 'Site', 'Rainfall (mm)'])
-
     dataset = dataset.rename({'Date':'OldDate'}, axis='columns')
     dataset['Date'] = [pd.to_datetime(x,dayfirst=True) for x in dataset['OldDate']]
     dataset = dataset.drop('OldDate', axis='columns')
@@ -44,15 +43,12 @@ def daily_mean(data):
     Index must be np.datetime64 compatible format."""
     return data.groupby(data.index.date).mean()
 
-
 def daily_max(data):
     """Calculate the daily max of a 2D data array.
     Index must be np.datetime64 compatible format."""
     return data.groupby(data.index.date).max()
 
-
 def daily_min(data):
     """Calculate the daily min of a 2D data array.
     Index must be np.datetime64 compatible format."""
     return data.groupby(data.index.date).min()
-

@@ -112,6 +112,8 @@ def test_daily_max(test_input, expected_output):
     from catchment.models import daily_max
     pdt.assert_frame_equal(daily_max(test_input), expected_output)
 
+
+
 #def test_daily_mean_zeros():
     """Test that mean function works for an array of zeros."""
     from catchment.models import daily_mean
